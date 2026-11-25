@@ -39,7 +39,8 @@ export function calcEstimate(e, cfg) {
 
   // ---- キャンペーン関連 ----
   // 「追加/変更」で選んだもの＋自動表示（増量オプション付きプラン、Pontaパス込み／追加時、値引き・割引のキャンペーン）
-  const campAvail = brand ? activeCampaigns(cfg, { brand, kind, deviceName: sim ? '' : e.device, planName: plan ? plan.name : '' }) : [];
+  const tierNow = plan ? plan.tiers[Number(e.tier || 0)] || plan.tiers[0] : null;
+  const campAvail = brand ? activeCampaigns(cfg, { brand, kind, deviceName: sim ? '' : e.device, planName: plan ? plan.name : '', tierLabel: tierNow ? tierNow.label : '' }) : [];
   const pontaActive = optShown.some((o) => /Pontaパス/.test(o.name));
   // 自動で表示するのは、管理画面の「自動で表示する条件」に当てはまるときだけ（「自動では出さない」は、追加/変更で選んだときだけ表示）
   const campAuto = (c) => c.autoWhen === 'always' || (c.autoWhen === 'zouryou' && !!(plan && plan.zouryou)) || (c.autoWhen === 'ponta' && pontaActive);

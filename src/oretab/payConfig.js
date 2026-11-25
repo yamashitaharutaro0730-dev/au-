@@ -42,6 +42,8 @@ export const DEFAULTS = {
     { name: 'Pontaパス', detail: '30日間無料', type: '表示のみ', amount: '', target: '', brand: 'both', kinds: '', start: '', end: '', autoWhen: 'ponta', frees: 'Pontaパス' },
     { name: '増量オプション', detail: '翌月より7か月間無料', type: '表示のみ', amount: '', target: '', brand: 'uq', kinds: '', start: '', end: '', autoWhen: 'zouryou', frees: '増量オプション' },
     { name: 'UQコミコミおトク割', detail: '翌月以降13か月間-660円', type: '月額割引', amount: 660, target: 'コミコミ', brand: 'uq', kinds: '', start: '', end: '', autoWhen: 'always' },
+    // 対象の「プラン名[段階]」は、そのプランのその段階を選んだときだけ（例：トクトクプラン2[5GB超〜30GB]）
+    { name: 'UQ親子応援割', detail: '12か月間 -1,100円', type: '月額割引', amount: 1100, target: 'トクトクプラン2[5GB超〜30GB]、コミコミ', brand: 'uq', kinds: '', start: '', end: '', autoWhen: '' },
     { name: '番号移行プログラム', detail: '翌月より13か月間-2,640円', type: '表示のみ', amount: '', target: '', brand: 'au', kinds: '番号移行', start: '', end: '', autoWhen: '' },
   ],
   // オプションサービス（「追加」ボタンからチェックで選ぶ）
@@ -164,7 +166,7 @@ const today = () => {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 };
 const normDate = (s) => String(s || '').trim().replace(/\//g, '-');
-export function activeCampaigns(cfg, { brand, kind, deviceName, planName }) {
+export function activeCampaigns(cfg, { brand, kind, deviceName, planName, tierLabel = '' }) {
   const t = today();
   return cfg.campaigns.map((c, i) => ({ ...c, id: `c${i}` })).filter((c) => {
     if (!c.name) return false;
@@ -176,7 +178,12 @@ export function activeCampaigns(cfg, { brand, kind, deviceName, planName }) {
     if (c.type === '表示のみ' && !words.length) return true;
     const subject = c.type === '月額割引' ? planName : deviceName;
     if (!subject) return false;
-    return !words.length || words.some((w) => subject.includes(w));
+    // 「名前[段階]」の形なら、データ量の段階も合っているときだけ
+    return !words.length || words.some((w) => {
+      const m = w.match(/^(.*?)[\[［](.+)[\]］]$/);
+      if (!m) return subject.includes(w);
+      return subject.includes(m[1].trim()) && String(tierLabel).includes(m[2].trim());
+    });
   }).map((c) => ({ ...c, amount: Number(c.amount) || 0 }));
 }
 

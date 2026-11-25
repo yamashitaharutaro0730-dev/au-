@@ -77,14 +77,15 @@ export default class OyakoLogic extends DCLogic {
         const ok = /\d/.test(c.after);
         const idx = off + k;
         cells.push({ open: () => this.setState({ pop: idx }), text: c.after, sub: ok ? '円' : '', hasSub: ok, subStyle: 'font-size:' + z(13) + ';font-weight:800;color:#c8102e;margin-left:1px',
-          style: base + edge(k) + 'cursor:pointer;flex-direction:row;align-items:baseline;justify-content:center;background:' + (c.oyako ? '#d9f2e1' : (ok ? '#f3f4f6' : '#ffffff')) + ';font-weight:900;font-size:' + (ok ? z(30) : z(17)) + ';color:' + (ok ? '#c8102e' : '#555') });
+          style: base + edge(k) + 'cursor:pointer;flex-direction:row;align-items:baseline;justify-content:center;background:' + (c.oyako ? '#d9f2e1' : (ok ? '#f3f4f6' : '#ffffff')) + ';font-weight:900;font-size:' + (ok ? (sp ? '31px' : z(30)) : z(17)) + ';color:' + (ok ? '#c8102e' : '#555') + (sp ? ';white-space:nowrap;letter-spacing:-0.5px' : '') });
       });
       lab('期間');
       each((c, k) => cells.push({ text: c.term || '－', hasSub: false, style: base + edge(k) + 'font-weight:800;font-size:' + z(13.5) }));
       lab('特典', 'データ増量など');
       each((c, k) => cells.push({ text: c.bonus || '－', sub: c.bonusSub || '', hasSub: !!c.bonusSub, subStyle: 'display:block;font-size:' + z(11) + ';font-weight:700;color:#145c2b;margin-top:2px', style: base + edge(k) + 'font-weight:900;font-size:' + (c.bonus ? z(17) : z(14)) + ';color:' + (c.bonus ? '#145c2b' : '#999') + ';background:' + (c.bonus ? '#eaf7ee' : '#fff') }));
       lab('受付');
-      each((c, k) => cells.push({ text: c.accept, hasSub: false, style: base + edge(k) + 'font-weight:700;font-size:' + z(12) + ';line-height:1.35;color:' + (/終了未定|〜/.test(c.accept) ? '#b42318' : '#333') }));
+      // スマホは「11/19〜 終了未定」をスペースのところで改行する（「終了未／定」と切れないように）
+      each((c, k) => cells.push({ text: c.accept, hasSub: false, style: base + edge(k) + (sp && /\s/.test(c.accept) ? 'word-break:keep-all;' : '') + 'font-weight:700;font-size:' + z(12) + ';line-height:1.35;color:' + (/終了未定|〜/.test(c.accept) ? '#b42318' : '#333') }));
       return { gridStyle, cells: cells.map((x) => ({ open: () => {}, ...x })) };
     };
     const all = build(B, 0, false);
