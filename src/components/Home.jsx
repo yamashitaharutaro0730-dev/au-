@@ -24,12 +24,13 @@ const Icon = ({ k, size = 22 }) => <svg width={size} height={size} viewBox="0 0 
 
 // ホーム画面（案C）：中央に「au navi」と用語検索、その下にメニューのタイル
 // PC（900px以上）は3列×2段のタイル、スマホは1列のカード。右上のボタンで右側からメニューが開く（最初は閉じている）
-export default function Home({ terms, testUser, onOpenFiltered, onGoTest, onGoDevices, onGoOreTab, onGoNippou, onGoKpi, onLogout, onAdminLogin, draft, draftText, onResumeDraft, unreadCount = 0, streak, onGoEval, onGoMyPage, onGoBravePost, onGoRival, onGoCases, badges = {} }) {
+export default function Home({ terms, testUser, onOpenFiltered, onGoTest, onGoDevices, onGoOreTab, onGoNippou, onGoKpi, onLogout, onAdminLogin, draft, draftText, onResumeDraft, unreadCount = 0, streak, onGoEval, onGoMyPage, onGoBravePost, onGoRival, onGoSisaku, onGoCases, badges = {} }) {
   const count = Object.keys(terms || {}).length;
   const [q, setQ] = React.useState('');
   const [menuOpen, setMenuOpen] = React.useState(false);
   const MENU = [
     ['用語一覧', '検索・カテゴリ・ランクで絞り込んで調べる', 'book', () => onOpenFiltered({})],
+    ['施策一覧', '今週の期間限定・ベースの施策を販路ごとに見る', 'list', onGoSisaku],
     ['機種比較', 'iPhone・Androidのできる／できないを一覧表で比べる', 'phones', onGoDevices],
     ['他社比較', '他社のパンフレット原本と、特徴・メリット・トーク', 'scale', onGoRival],
     ['オレタブ', '本番前にオレタブの操作を練習する（横画面）', 'tab', onGoOreTab],

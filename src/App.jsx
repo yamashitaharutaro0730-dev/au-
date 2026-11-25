@@ -34,6 +34,7 @@ import AdminLogin from './components/AdminLogin.jsx';
 import Admin from './components/Admin.jsx';
 import BravePost from './bravepost/BravePost.jsx';
 import RivalPage from './rival/RivalPage.jsx';
+import SisakuPage from './sisaku/SisakuPage.jsx';
 import CasesPage from './cases/CasesPage.jsx';
 
 export default function App() {
@@ -244,6 +245,7 @@ export default function App() {
       onGoMyPage={() => setPage('mypage')}
       onGoBravePost={() => setPage('bravepost')}
       onGoRival={() => setPage('rival')}
+      onGoSisaku={() => setPage('sisaku')}
       onGoCases={canCases ? () => setPage('cases') : null}
       onLogout={handleLogout}
       onAdminLogin={() => setPage('admin-login')}
@@ -264,6 +266,9 @@ export default function App() {
       break;
     case 'bravepost':
       content = <BravePost user={testUser} onBack={() => setPage('home')} ntIsNew={nt.isNew} ntMarkSeen={nt.markSeen} />;
+      break;
+    case 'sisaku':
+      content = <SisakuPage user={testUser} isAdmin={isAdmin} onBack={() => setPage('home')} />;
       break;
     case 'rival':
       content = <RivalPage user={testUser} isAdmin={isAdmin} onBack={() => setPage('home')} />;

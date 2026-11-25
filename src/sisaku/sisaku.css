@@ -1,0 +1,139 @@
+/* ===== 施策一覧（sk-）と施策の登録（ska-） ===== */
+.sk{display:flex;flex-direction:column;background:#fef6f0;}
+.sk .sk-wrap{max-width:760px;margin:0 auto;width:100%;box-sizing:border-box;}
+.sk .sk-bar{flex-shrink:0;background:#fff;border-bottom:1px solid #ffd9c0;padding:10px 12px 0;}
+.sk .sk-week{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.sk .sk-week-t{display:flex;flex-direction:column;flex:1;min-width:0;}
+.sk .sk-week-t b{font-size:.9rem;}
+.sk .sk-week-t small{font-size:.72rem;color:#8a5a40;}
+.sk .sk-histbtn,.sk .sk-admbtn{height:34px;padding:0 12px;border-radius:999px;border:1.5px solid #ffd9c0;background:#fff;color:#cc4f00;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer;white-space:nowrap;}
+.sk .sk-admbtn{background:#ff6600;border-color:#ff6600;color:#1a0f08;font-weight:800;}
+.sk .sk-pick{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap;}
+.sk .sk-shop{flex:1;min-width:96px;height:42px;border-radius:10px;border:1.5px solid #ffd9c0;background:#fff;color:#5a4334;font-family:inherit;font-size:.85rem;font-weight:800;cursor:pointer;}
+.sk .sk-shop.on{background:#ff6600;border-color:#ff6600;color:#1a0f08;}
+.sk .sk-sep{width:1px;background:#ffd9c0;margin:4px 0;}
+.sk .sk-car{width:58px;height:42px;border-radius:10px;border:1.5px solid #ffd9c0;background:#fff;color:#5a4334;font-family:inherit;font-size:.85rem;font-weight:800;cursor:pointer;}
+.sk .sk-car.on{color:#fff;}
+.sk .sk-tabs{display:grid;grid-template-columns:1fr 1fr;}
+.sk .sk-tabs button{height:44px;border:none;border-bottom:3px solid transparent;background:transparent;font-family:inherit;font-size:.92rem;font-weight:800;color:#5a4334;cursor:pointer;}
+.sk .sk-tabs button.on{border-bottom-color:#ff6600;color:#cc4f00;}
+.sk .sk-tabs small{font-size:.68rem;font-weight:700;margin-left:4px;color:#8a5a40;}
+.sk .sk-past{flex-shrink:0;background:#fff4d6;border-bottom:1px solid #f2d27a;color:#7a3d00;font-size:.76rem;font-weight:700;padding:8px 12px;display:flex;align-items:center;gap:8px;}
+.sk .sk-past span{flex:1;}
+.sk .sk-past button{height:32px;padding:0 12px;border-radius:999px;border:1.5px solid #f2d27a;background:#fff;color:#7a3d00;font-family:inherit;font-size:.72rem;font-weight:800;cursor:pointer;}
+.sk .sk-main{flex:1;min-height:0;overflow-y:auto;padding:12px 12px 32px;}
+.sk .sk-list{display:flex;flex-direction:column;gap:10px;}
+.sk .sk-list>*{flex-shrink:0;}
+.sk .sk-topics{background:#f4efff;border:1.5px solid #c9b6ef;border-radius:16px;padding:10px 12px 12px;display:flex;flex-direction:column;gap:8px;}
+.sk .sk-topics-h{display:flex;align-items:baseline;gap:8px;color:#5b2d91;}
+.sk .sk-topics-h b{font-size:.9rem;}
+.sk .sk-topics-h small{font-size:.72rem;}
+.sk .sk-topic{background:#fff;border:1px solid #ddd0f5;border-radius:12px;padding:8px 10px;display:flex;flex-direction:column;gap:4px;}
+.sk .sk-topic-top{display:flex;align-items:center;gap:6px;}
+.sk .sk-topic-top b{flex:1;font-size:.85rem;line-height:1.35;}
+.sk .sk-topic-top small{font-size:.68rem;font-weight:700;color:#5b2d91;}
+.sk .sk-topic p{margin:0;font-size:.78rem;line-height:1.5;color:#3a2c24;}
+.sk .sk-pill{flex-shrink:0;padding:2px 8px;border-radius:999px;font-size:.68rem;font-weight:800;}
+.sk .sk-pill.chg{background:#6b3fa0;color:#fff;}
+.sk .sk-pill.gray{background:#f3ece6;color:#5a4334;border-radius:6px;}
+.sk .sk-sec{display:flex;align-items:baseline;gap:8px;margin-top:4px;}
+.sk .sk-sec b{font-size:.85rem;color:#cc4f00;border-bottom:2px solid #ff6600;padding-bottom:1px;}
+.sk .sk-sec small{font-size:.72rem;color:#8a5a40;}
+.sk .sk-card{background:#fff;border:1.5px solid #ffd9c0;border-radius:14px;overflow:hidden;}
+.sk .sk-card.chg{border-color:#c9b6ef;}
+.sk .sk-card-bar{height:3px;}
+.sk .sk-card-body{padding:10px 12px 12px;display:flex;flex-direction:column;gap:7px;}
+.sk .sk-card-top{display:flex;align-items:flex-start;gap:6px;}
+.sk .sk-card-title{flex:1;font-size:.95rem;line-height:1.4;}
+.sk .sk-period{align-self:flex-start;padding:2px 8px;border-radius:6px;font-size:.68rem;font-weight:800;background:#fdeaea;color:#b42318;}
+.sk .sk-row{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;border-top:1px dashed #f0dccd;padding-top:6px;}
+.sk .sk-row-l{font-size:.75rem;font-weight:700;color:#5a4334;min-width:48px;}
+.sk .sk-row-v{font-size:1.05rem;color:#c2410c;}
+.sk .sk-row-c{font-size:.75rem;color:#5a4334;}
+.sk .sk-conds{display:flex;gap:6px;font-size:.78rem;line-height:1.6;}
+.sk .sk-conds span{flex-shrink:0;font-weight:800;color:#5a4334;}
+.sk .sk-conds p{margin:0;white-space:pre-line;}
+.sk .sk-notes{background:#fff4d6;border:1px solid #f2d27a;border-radius:8px;padding:6px 9px;font-size:.75rem;line-height:1.6;color:#7a3d00;white-space:pre-line;}
+.sk .sk-empty{text-align:center;color:#8a5a40;font-size:.82rem;padding:36px 8px;line-height:1.7;}
+.sk .sk-foot{margin:4px 0 0;font-size:.7rem;color:#8a5a40;line-height:1.6;}
+.sk .sk-grow{flex:1;}
+.sk .sk-sheet-bg{position:fixed;inset:0;background:rgba(26,15,8,.45);z-index:50;display:flex;align-items:flex-end;justify-content:center;}
+.sk .sk-sheet{width:100%;max-width:520px;background:#fff;border-radius:18px 18px 0 0;padding:10px 14px 24px;display:flex;flex-direction:column;gap:8px;max-height:80vh;overflow-y:auto;box-sizing:border-box;}
+.sk .sk-handle{width:34px;height:4px;border-radius:2px;background:#ffd9c0;margin:0 auto 4px;}
+.sk .sk-wk{display:flex;align-items:center;gap:8px;min-height:50px;padding:0 12px;border-radius:10px;border:1.5px solid #ffd9c0;background:#fff;font-family:inherit;text-align:left;cursor:pointer;}
+.sk .sk-wk.on{border-color:#ff6600;background:#fff2ea;}
+.sk .sk-wk span{display:flex;flex-direction:column;flex:1;}
+.sk .sk-wk b{font-size:.85rem;color:#1a0f08;}
+.sk .sk-wk small{font-size:.72rem;color:#8a5a40;}
+.sk .sk-wk em{font-style:normal;font-size:.68rem;font-weight:800;color:#fff;background:#ff6600;border-radius:999px;padding:2px 8px;}
+.sk .sk-close{height:44px;border-radius:10px;border:1.5px solid #ffd9c0;background:#fff;font-family:inherit;font-weight:700;color:#5a4334;cursor:pointer;}
+
+/* 登録（管理者） */
+.ska .ska-body{flex:1;min-height:0;overflow-y:auto;display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:18px;padding:16px;box-sizing:border-box;align-items:start;}
+.ska .ska-left{display:flex;flex-direction:column;gap:12px;position:sticky;top:0;}
+.ska .ska-step{display:flex;flex-direction:column;gap:6px;}
+.ska .ska-step>b{font-size:.78rem;color:#5a4334;}
+.ska .ska-chips{display:flex;gap:6px;flex-wrap:wrap;}
+.ska .ska-chips .sk-shop{flex:0 0 auto;padding:0 14px;height:38px;}
+.ska .ska-add,.ska .ska-week{display:flex;gap:6px;align-items:center;}
+.ska .ska-add input,.ska .ska-week input{flex:1;height:38px;border-radius:10px;border:1.5px solid #ffd9c0;padding:0 10px;font-family:inherit;font-size:.85rem;background:#fff;}
+.ska .ska-add button{height:38px;padding:0 14px;border-radius:10px;border:1.5px solid #ffd9c0;background:#fff;color:#cc4f00;font-family:inherit;font-weight:800;cursor:pointer;}
+.ska .ska-week span{font-size:.8rem;font-weight:800;color:#cc4f00;white-space:nowrap;}
+.ska .ska-raw{min-height:300px;resize:vertical;border-radius:12px;border:1.5px solid #ffd9c0;background:#fff;padding:10px 12px;font-family:inherit;font-size:.8rem;line-height:1.6;}
+.ska .ska-go{height:50px;border-radius:12px;border:none;background:#ff6600;color:#1a0f08;font-family:inherit;font-size:.95rem;font-weight:900;cursor:pointer;}
+.ska .ska-hint{margin:0;font-size:.72rem;color:#8a5a40;line-height:1.6;}
+.ska .ska-right{display:flex;flex-direction:column;gap:10px;min-width:0;}
+.ska .ska-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.ska .ska-head b{font-size:.95rem;}
+.ska .ska-head small{font-size:.75rem;color:#8a5a40;}
+.ska .ska-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;align-items:start;}
+.ska .ska-card{background:#fff;border:1.5px solid #ffd9c0;border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:7px;}
+.ska .ska-card.lim{border-color:#f4b4ae;}
+.ska .ska-card.chg{border-color:#b9a2e6;}
+.ska .ska-top{display:flex;align-items:center;gap:6px;}
+.ska .ska-mini{height:32px;padding:0 10px;border-radius:8px;border:1.5px solid #ffd9c0;background:#fff;color:#cc4f00;font-family:inherit;font-size:.72rem;font-weight:700;cursor:pointer;}
+.ska .ska-mini.red{color:#b42318;}
+.ska .ska-title{font-size:.92rem;}
+.ska .ska-row{font-size:.8rem;line-height:1.5;color:#5a4334;}
+.ska .ska-row b{color:#c2410c;}
+.ska .ska-small{font-size:.75rem;line-height:1.55;color:#3a2c24;white-space:pre-line;}
+.ska .ska-small.warn{color:#7a3d00;background:#fff4d6;border-radius:6px;padding:4px 8px;}
+.ska .ska-form{display:flex;flex-direction:column;gap:6px;}
+.ska .ska-form label{display:flex;flex-direction:column;gap:3px;font-size:.7rem;font-weight:700;color:#5a4334;}
+.ska .ska-form input,.ska .ska-form select,.ska .ska-form textarea{border-radius:8px;border:1.5px solid #ffd9c0;padding:6px 8px;font-family:inherit;font-size:.8rem;background:#fff;}
+.ska .ska-2{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.ska .ska-seg{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid #ffd9c0;border-radius:10px;overflow:hidden;}
+.ska .ska-seg button{height:38px;border:none;background:#fff;color:#5a4334;font-family:inherit;font-size:.8rem;font-weight:800;cursor:pointer;}
+.ska .ska-seg button+button{border-left:1.5px solid #ffd9c0;}
+.ska .ska-seg button.on{background:#ff6600;color:#1a0f08;}
+.ska .ska-seg button.on.lim{background:#b42318;color:#fff;}
+.ska .ska-seg.sm{display:inline-grid;}
+.ska .ska-seg.sm button{height:32px;padding:0 10px;font-size:.72rem;}
+.ska .ska-period{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:.75rem;color:#5a4334;}
+.ska .ska-period label{display:flex;align-items:center;gap:6px;font-weight:700;}
+.ska .ska-period input{height:34px;border-radius:8px;border:1.5px solid #ffd9c0;padding:0 6px;font-family:inherit;font-size:.78rem;}
+.ska .ska-period small{flex-basis:100%;font-size:.68rem;color:#8a5a40;}
+.ska .ska-chg{display:flex;align-items:center;gap:5px;flex-wrap:wrap;border-top:1px dashed #f0dccd;padding-top:7px;font-size:.72rem;font-weight:700;color:#5a4334;}
+.ska .ska-chg button{height:32px;padding:0 10px;border-radius:999px;border:1.5px solid #ddd0f5;background:#fff;color:#5b2d91;font-family:inherit;font-size:.72rem;font-weight:800;cursor:pointer;}
+.ska .ska-chg button.on{background:#6b3fa0;border-color:#6b3fa0;color:#fff;}
+.ska .ska-chgtext{display:flex;flex-direction:column;gap:3px;font-size:.7rem;font-weight:700;color:#5b2d91;}
+.ska .ska-chgtext input{border-radius:8px;border:1.5px solid #ddd0f5;padding:6px 8px;font-family:inherit;font-size:.8rem;background:#f4efff;}
+.ska .ska-addcard{min-height:60px;border-radius:14px;border:1.5px dashed #e8c9b3;background:#fff;color:#cc4f00;font-family:inherit;font-weight:800;cursor:pointer;}
+.ska .ska-missing,.ska .ska-unparsed{grid-column:1/-1;border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:6px;font-size:.8rem;}
+.ska .ska-missing{background:#f4efff;border:1.5px solid #ddd0f5;}
+.ska .ska-missing>b{color:#5b2d91;}
+.ska .ska-unparsed{background:#fff;border:1.5px dashed #e8c9b3;color:#5a4334;}
+.ska .ska-mrow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.ska .ska-mrow span{flex:1;min-width:160px;}
+.ska .ska-mrow button{height:32px;padding:0 10px;border-radius:8px;border:1.5px solid #ddd0f5;background:#fff;color:#5b2d91;font-family:inherit;font-size:.72rem;font-weight:800;cursor:pointer;}
+.ska .ska-mrow button.on{background:#6b3fa0;color:#fff;border-color:#6b3fa0;}
+.ska .ska-foot{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border-top:1px solid #ffd9c0;padding-top:12px;font-size:.75rem;color:#5a4334;}
+.ska .ska-foot span{flex:1;min-width:200px;}
+.ska .ska-cancel,.ska .ska-save{height:46px;padding:0 18px;border-radius:10px;font-family:inherit;font-size:.85rem;font-weight:800;cursor:pointer;}
+.ska .ska-cancel{border:1.5px solid #ffd9c0;background:#fff;color:#5a4334;}
+.ska .ska-save{border:none;background:#ff6600;color:#1a0f08;font-weight:900;}
+@media (max-width:899px){
+  .ska .ska-body{grid-template-columns:minmax(0,1fr);}
+  .ska .ska-left{position:static;}
+  .ska .ska-raw{min-height:200px;}
+}

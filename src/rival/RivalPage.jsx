@@ -9,6 +9,7 @@ import { DcView, FitBox } from './dc/DcView.jsx';
 import priceTpl from './dc/price.tpl.html?raw';
 import priceSpTpl from './dc/priceSp.tpl.html?raw';
 import PriceLogic from './dc/price.logic.js';
+import OyakoTable from './OyakoTable.jsx';
 
 // ===== 他社比較 =====
 // 保存場所（au-data-base）
@@ -140,6 +141,7 @@ export default function RivalPage({ user, isAdmin, onBack }) {
             <div className="ev-note">割引前の月額と、割引をすべて受けたときの月額です。割引の条件は表の下の※を見てください。機種代は含みません。</div>
             {narrow ? <FitBox width={860} min={0.3}><DcView tpl={priceSpTpl} Logic={PriceLogic} /></FitBox> : <FitBox width={1700} min={0.5}><DcView tpl={priceTpl} Logic={PriceLogic} /></FitBox>}
             <div className="rv-ai-note">AI生成（要確認）：AIが2026年10月時点の公開情報をもとに作った表です。料金や条件は変わることがあるので、お客様に案内する前に各社の公式で確認してください。</div>
+            <OyakoTable narrow={narrow} />
           </main>
           ) : isList ? (
           <main className="rv-main">

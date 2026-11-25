@@ -10,13 +10,18 @@ const TIP = (text) => S('ヒント', 'tip', [text]);
 
 // 画面の一覧（管理画面の左の並び）。group＝見出し
 export const SCREENS = [
-  { group: '一般の画面', keys: ['home', 'glossary', 'term', 'devices', 'rival', 'cases', 'bravepost', 'test', 'eval', 'mypage'] },
+  { group: '一般の画面', keys: ['home', 'glossary', 'term', 'sisaku', 'devices', 'rival', 'cases', 'bravepost', 'test', 'eval', 'mypage'] },
   { group: '日報・KPI', keys: ['nippou_home', 'nippou_new', 'nippou_form', 'nippou_preview', 'nippou_list', 'nippou_pick', 'nippou_detail', 'nippou_results', 'nippou_stats', 'nippou_stores', 'kpi', 'personal'] },
   { group: 'オレタブ（タブで切り替え）', keys: ['oretab_can', 'oretab_login', 'oretab_map', 'oretab_cond'], oretab: true },
   { group: '管理画面', keys: ['admin_nippou', 'admin_glossary', 'admin_member', 'admin_eval', 'admin_rtest', 'admin_notice', 'admin_manual'] },
 ];
 
 export const DEFAULT_MANUALS = {
+  sisaku: { title: '施策一覧', sections: [
+    CAN(['今週の施策を、販路（ジョーシン・エディオンなど）ごとに見られます', '期間限定とベースをタブで切り替えられます', '先週から変わった施策は、紫の「今週のトピックス」にまとめて出ます', '過去の週の施策も見られます', '管理者は、LINE で届いた文を貼りつけるだけで施策を登録できます']),
+    HOW(['上の販路のボタンで、自分の現場の販路を選びます', '【au】【UQ】で、見たいキャリアを選びます', '【期間限定】【ベース】のタブで切り替えます', '【過去の週】で、前の週の施策を開けます', '管理者は【＋ 施策を登録】で、販路と日付を選び、LINE の文を貼りつけて【施策ごとに分ける】を押します。中身を確認して【この内容で保存】を押します']),
+    TIP('数字や条件は、迷ったら必ず社員さんに確認してください。終了日が過ぎた期間限定の施策は、自動で表示されなくなります。'),
+  ] },
   rival: { title: '他社比較', sections: [
     CAN(['モバイル・ネット・副商材（でんき・クレカ・決済）ごとに、他社の公式の資料（パンフレット・カタログ）を開けます', '会社ごとに「特徴・メリット・デメリット・顧客の特徴・獲得のトークスクリプト」をみんなで書いて共有できます', '「一覧で比べる」で、各社を1つの表で見比べられます', '開くと最初に【料金表】が出ます。各社の割引前と最大割引後の月額を1枚の表で比べられ、黄色の数字を押すと割引の内訳とほかに使える割引が出ます', '上のタブ【切り返し集】で、お客様の一言に対する切り返しを探せます。だれでも追加でき、使えたら【使えた】を押します']),
     HOW(['上のタブで、モバイル・ネット・副商材を選びます', '左（スマホは上）の一覧から会社を選びます', '【開く ↗】で、公式サイトの原本が新しいタブで開きます', '項目の【＋ 書く】で書き込みます。書いた人の名前が出ます', '切り返し集は、左（スマホは上）で種類や会社・商材を選んでしぼります。カードを押すと切り返しと根拠が開きます', '切り返し集の右上【＋ 追加】で、お客様の一言・切り返し・根拠を書きます']),
