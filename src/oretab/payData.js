@@ -44,9 +44,9 @@ export const DEVICE_GROUPS = [
     I('iPhone 17 Pro 256GB', 232800, 142000, 120000),
     I('iPhone 17 Pro 512GB', 285800, 177500, 155500),
     I('iPhone 17 Pro 1TB', 329300, 203500, 181500),
-    I('iPhone 17 256GB', 168300, 134153, 83500),
+    I('iPhone 17 256GB', 186800, 134153, 83500),
     I('iPhone 17 512GB', 215800, 158000, 106500),
-    I('iPhone 17e 256GB', 127900, 83853, 60000),
+    I('iPhone 17e 256GB', 144800, 83853, 60000),
     I('iPhone 17e 512GB', 169900, 109000, 90000),
     I('iPhone 16e 128GB', 112800, 74253, 68753, 0),
     I('iPhone 16e 256GB', 129800, 96753, 85753, 11000),
@@ -108,7 +108,7 @@ export const DEVICE_GROUPS = [
 const U = (name, price, r = null) => ({ name, price, rNew: r, rKihen: r, fee: r ? 22000 : 0 });
 export const UQ_DEVICE_GROUPS = [
   { maker: 'iPhone', items: [
-    U('iPhone 17e 256GB', 127900, 83853),
+    U('iPhone 17e 256GB', 144800, 83853),
     U('iPhone 17e 512GB', 169900),
     U('iPhone 16 128GB', 146000, 101953), // UQ乗り換え・スマトク：残価101,953円（前半44,047円）
   ] },
@@ -165,7 +165,7 @@ export const PLANS = {
       calls: [{ id: '', label: 'なし（5分以内かけ放題込み）', price: 0 }, { id: 'full', label: '24時間かけ放題に変更', price: 1100 }],
       fam: false, sv: true, card: true, note: '60歳以上の方が対象。家族割プラスの割引対象外（人数には数えられます）' },
     { id: 'u18', name: 'U18バリュープラン', tiers: [
-      { id: '10', label: '〜10GB', price: 2398 }, { id: '20', label: '10GB超〜20GB', price: 4048 },
+      { id: '3', label: '〜3GB', price: 2398 }, { id: '20', label: '3GB超〜20GB', price: 4048 },
     ], calls: AU_CALLS, fam: true, sv: true, card: true, u18: true, note: '加入時5〜18歳の方が対象。家族割プラス・auスマートバリューの割引額は550円（2人の家族割は220円）' },
     { id: 'u12', name: 'U12バリュープラン', tiers: [{ id: 'low', label: '最大300kbps', price: 1870 }], calls: AU_CALLS, fam: false, sv: false, card: true,
       note: '加入時5〜12歳の方が対象。家族割プラス・auスマートバリューは対象外（別途U12家族割があります）' },
