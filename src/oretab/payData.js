@@ -110,7 +110,8 @@ export const DEVICE_GROUPS = [
 const U = (name, price, r = null) => ({ name, price, rNew: r, rKihen: r, fee: r ? 22000 : 0 });
 export const UQ_DEVICE_GROUPS = [
   { maker: 'iPhone', items: [
-    U('iPhone 17e 256GB', 144800, 83853),
+    // 新規・MNP・番号移行：値引き44,000円でスマトク月額241円になる残価（144,800−44,000−241×23）。機変は従来の残価
+    { name: 'iPhone 17e 256GB', price: 144800, rNew: 95257, rKihen: 83853, fee: 22000 },
     U('iPhone 17e 512GB', 169900),
     U('iPhone 16 128GB', 146000, 101953), // UQ乗り換え・スマトク：残価101,953円（前半44,047円）
   ] },
