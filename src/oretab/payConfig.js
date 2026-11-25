@@ -42,8 +42,8 @@ export const DEFAULTS = {
     { name: 'Pontaパス', detail: '30日間無料', type: '表示のみ', amount: '', target: '', brand: 'both', kinds: '', start: '', end: '', autoWhen: 'ponta', frees: 'Pontaパス' },
     { name: '増量オプション', detail: '翌月より7か月間無料', type: '表示のみ', amount: '', target: '', brand: 'uq', kinds: '', start: '', end: '', autoWhen: 'zouryou', frees: '増量オプション' },
     { name: 'UQコミコミおトク割', detail: '翌月以降13か月間-660円', type: '月額割引', amount: 660, target: 'コミコミ', brand: 'uq', kinds: '', start: '', end: '', autoWhen: 'always' },
-    // 対象の「プラン名[段階]」は、そのプランのその段階を選んだときだけ（例：トクトクプラン2[5GB超〜30GB]）
-    { name: 'UQ親子応援割', detail: '12か月間 -1,100円', type: '月額割引', amount: 1100, target: 'トクトクプラン2[5GB超〜30GB]、コミコミ', brand: 'uq', kinds: '', start: '', end: '', autoWhen: '' },
+    // 対象の「プラン名[段階]」は、そのプランのその段階を選んだときだけ（例：トクトクプラン2[5GB超]）
+    { name: 'UQ親子応援割', detail: '12か月間 -1,100円', type: '月額割引', amount: 1100, target: 'トクトクプラン2[5GB超]、コミコミ', brand: 'uq', kinds: '', start: '', end: '', autoWhen: '' },
     { name: '番号移行プログラム', detail: '翌月より13か月間-2,640円', type: '表示のみ', amount: '', target: '', brand: 'au', kinds: '番号移行', start: '', end: '', autoWhen: '' },
   ],
   // オプションサービス（「追加」ボタンからチェックで選ぶ）
