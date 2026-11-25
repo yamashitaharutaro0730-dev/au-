@@ -37,6 +37,8 @@ export const DEVICE_GROUPS = [
     I('iPhone Air 256GB', 193900, 145500, 110600),
     I('iPhone Air 512GB', 236900, 169500, 143600),
     I('iPhone Air 1TB', 279900, 189500, 181100),
+    // iPhone DUO：価格・残価は未定（決まるまでは画面で手入力）
+    { name: 'iPhone DUO', price: null, rNew: null, rKihen: null, fee: 22000 },
     I('iPhone 17 Pro Max 256GB', 265800, 164500, 142500),
     I('iPhone 17 Pro Max 512GB', 309800, 191000, 169000),
     I('iPhone 17 Pro Max 1TB', 353800, 216500, 194500),
@@ -44,9 +46,9 @@ export const DEVICE_GROUPS = [
     I('iPhone 17 Pro 256GB', 232800, 142000, 120000),
     I('iPhone 17 Pro 512GB', 285800, 177500, 155500),
     I('iPhone 17 Pro 1TB', 329300, 203500, 181500),
-    I('iPhone 17 256GB', 186800, 134153, 83500),
+    I('iPhone 17 256GB', 186800, 186754, 83500), // 新規・MNP・番号移行はスマトク月額2円になるよう残価を設定（186,800−46）
     I('iPhone 17 512GB', 215800, 158000, 106500),
-    I('iPhone 17e 256GB', 144800, 83853, 60000),
+    I('iPhone 17e 256GB', 144800, 144754, 60000), // 新規・MNP・番号移行はスマトク月額2円になるよう残価を設定（144,800−46）
     I('iPhone 17e 512GB', 169900, 109000, 90000),
     I('iPhone 16e 128GB', 112800, 74253, 68753, 0),
     I('iPhone 16e 256GB', 129800, 96753, 85753, 11000),
